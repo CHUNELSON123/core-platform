@@ -1,0 +1,18 @@
+info:
+  name: Profile
+  type: http
+  seq: 5
+
+http:
+  method: GET
+  url: http://localhost:3001/auth/profile
+  headers:
+    - name: Authorization
+      value: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1NWMwNDUyYi00NjU1LTQ5YzEtOWYxNC0xYjlmM2NmZTc2NDgiLCJpYXQiOjE3ODQzMjQxOTIsImV4cCI6MTc4NDMyNTA5Mn0.UJDDzeZUf-LtXnHG4qehz8_zqSPW5HGf8_XZUzV0zvI
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

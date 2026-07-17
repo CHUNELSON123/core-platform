@@ -84,21 +84,30 @@ Super Administrator
 
 6. Operating Environment
 Frontend
+
 Next.js
 React
 TypeScript
 Tailwind CSS
+
 Backend
+
 NestJS
 Node.js
 TypeScript
+
 Database
+
 PostgreSQL
+
 Operating Systems
+
 Windows
 Linux
 macOS
+
 Browsers
+
 Chrome
 Edge
 Firefox

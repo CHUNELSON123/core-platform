@@ -1,0 +1,35 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model Organization {
+
+  id String @id @default(uuid())
+
+  name String
+
+  code String @unique
+
+  email String?
+
+  phone String?
+
+  website String?
+
+  logoUrl String?
+
+  isActive Boolean @default(true)
+
+  createdAt DateTime @default(now())
+
+  updatedAt DateTime @updatedAt
+
+  deletedAt DateTime?
+
+  @@map("organizations")
+}

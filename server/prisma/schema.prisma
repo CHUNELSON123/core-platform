@@ -52,6 +52,8 @@ model User {
 
   profile UserProfile?
 
+  roles UserRole[]
+
   createdAt DateTime  @default(now())
   updatedAt DateTime  @updatedAt
   deletedAt DateTime?
@@ -79,4 +81,73 @@ model UserProfile {
   deletedAt DateTime?
 
   @@map("user_profiles")
+}
+
+model Role {
+  id String @id @default(uuid())
+
+  name String @unique
+
+  description String?
+
+  isActive Boolean @default(true)
+
+  users       UserRole[]
+  permissions RolePermission[]
+
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  deletedAt DateTime?
+
+  @@map("roles")
+}
+
+model Permission {
+  id String @id @default(uuid())
+
+  name String @unique
+
+  description String?
+
+  isActive Boolean @default(true)
+
+  roles RolePermission[]
+
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  deletedAt DateTime?
+
+  @@map("permissions")
+}
+
+model UserRole {
+  id String @id @default(uuid())
+
+  userId String
+  roleId String
+
+  user User @relation(fields: [userId], references: [id])
+  role Role @relation(fields: [roleId], references: [id])
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([userId, roleId])
+  @@map("user_roles")
+}
+
+model RolePermission {
+  id String @id @default(uuid())
+
+  roleId       String
+  permissionId String
+
+  role       Role       @relation(fields: [roleId], references: [id])
+  permission Permission @relation(fields: [permissionId], references: [id])
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([roleId, permissionId])
+  @@map("role_permissions")
 }

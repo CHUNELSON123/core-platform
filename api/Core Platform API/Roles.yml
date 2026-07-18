@@ -4,8 +4,18 @@ info:
   seq: 11
 
 http:
-  method: POST
+  method: GET
   url: http://localhost:3001/roles
+  headers:
+    - name: Authorization
+      value: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJmOGQyMzk3Mi1kZjZmLTQ5ZTgtYTc5ZS1jYzY5ZGI0N2Q1YWUiLCJpYXQiOjE3ODQzNzk2MTMsImV4cCI6MTc4NDM4MDUxM30.II2hOhn2zd5rc_KHFEKc0EmpSUI3jAVLA955YFJvkW8
+  body:
+    type: json
+    data: |-
+      {
+        "name": "Operations Manager",
+        "description": "Manages operations"
+      }
   auth: inherit
 
 settings:

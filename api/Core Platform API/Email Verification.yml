@@ -6,6 +6,12 @@ info:
 http:
   method: POST
   url: http://localhost:3001/auth/verify-email
+  body:
+    type: json
+    data: |-
+      {
+        "token": "347b174c-2768-4d7b-a623-5224945c006c"
+      }
   auth: inherit
 
 settings:

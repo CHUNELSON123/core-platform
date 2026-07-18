@@ -11,7 +11,16 @@ http:
       value: application/json
   body:
     type: json
-    data: ""
+    data: |-
+      {
+        "organizationName": "NextGen Solutions Ltd",
+        "organizationCode": "NGS001",
+        "firstName": "Michael",
+        "lastName": "Johnson",
+        "phone": "+237677123456",
+        "email": "michael.johnson@example.com",
+        "password": "Password@123"
+      }
   auth: inherit
 
 settings:

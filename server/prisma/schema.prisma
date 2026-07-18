@@ -25,6 +25,7 @@ model Organization {
   isActive Boolean @default(true)
 
   users User[]
+  roles Role[]
 
   createdAt DateTime @default(now())
 
@@ -90,11 +91,15 @@ model UserProfile {
 model Role {
   id String @id @default(uuid())
 
-  name String @unique
+  organizationId String
+
+  name String 
 
   description String?
 
   isActive Boolean @default(true)
+
+  organization Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
 
   users       UserRole[]
   permissions RolePermission[]
@@ -102,6 +107,8 @@ model Role {
   createdAt DateTime  @default(now())
   updatedAt DateTime  @updatedAt
   deletedAt DateTime?
+
+  @@unique([organizationId, name])
 
   @@map("roles")
 }

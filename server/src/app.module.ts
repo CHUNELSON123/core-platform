@@ -6,6 +6,7 @@ import { PrismaModule } from './prisma/prisma.module';
 import { RoleModule } from './role/role.module';
 import { PermissionModule } from './permission/permission.module';
 import { RolePermissionModule } from './role-permission/role-permission.module';
+import { UserRoleModule } from './user-role/user-role.module'
 
 @Module({
   imports: [
@@ -13,7 +14,8 @@ import { RolePermissionModule } from './role-permission/role-permission.module';
     PrismaModule, 
     RoleModule, 
     PermissionModule, 
-    RolePermissionModule
+    RolePermissionModule,
+    UserRoleModule,
   ],
   controllers: [AppController],
   providers: [AppService],

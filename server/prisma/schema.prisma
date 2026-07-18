@@ -52,9 +52,11 @@ model User {
 
   profile UserProfile?
 
-  roles         UserRole[]
-  sessions      Session[]
-  refreshTokens RefreshToken[]
+  roles                   UserRole[]
+  sessions                Session[]
+  refreshTokens           RefreshToken[]
+  passwordResetTokens     PasswordResetToken[]
+  emailVerificationTokens EmailVerificationToken[]
 
   createdAt DateTime  @default(now())
   updatedAt DateTime  @updatedAt
@@ -196,4 +198,44 @@ model RefreshToken {
   deletedAt DateTime?
 
   @@map("refresh_tokens")
+}
+
+model PasswordResetToken {
+  id String @id @default(uuid())
+
+  userId String
+
+  token String @unique
+
+  expiresAt DateTime
+
+  isUsed Boolean @default(false)
+
+  user User @relation(fields: [userId], references: [id])
+
+  createdAt DateTime @default(now())
+
+  updatedAt DateTime @updatedAt
+
+  @@map("password_reset_tokens")
+}
+
+model EmailVerificationToken {
+  id String @id @default(uuid())
+
+  userId String
+
+  token String @unique
+
+  expiresAt DateTime
+
+  isUsed Boolean @default(false)
+
+  user User @relation(fields: [userId], references: [id])
+
+  createdAt DateTime @default(now())
+
+  updatedAt DateTime @updatedAt
+
+  @@map("email_verification_tokens")
 }
